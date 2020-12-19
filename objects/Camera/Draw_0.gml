@@ -31,8 +31,13 @@ var uniform_light_pos = shader_get_uniform(shd_toon, "lightPosition");
 var uniform_light_color = shader_get_uniform(shd_toon, "lightColor");
 var uniform_light_range = shader_get_uniform(shd_toon, "lightRange");
 shader_set_uniform_f(uniform_light_pos, 150, 150, 32);
+// this color uniform is kinda pointless now, since light color
+// is now controlled via the ramp texture
 shader_set_uniform_f(uniform_light_color, 1, 1, 1, 1);
 shader_set_uniform_f(uniform_light_range, 1000);
+
+var uniform_time_value = shader_get_uniform(shd_toon, "time_value");
+shader_set_uniform_f(uniform_time_value, frac(time_of_day / 500));
 
 var sampler_toon_ramp = shader_get_sampler_index(shd_toon, "rampTex");
 texture_set_stage(sampler_toon_ramp, sprite_get_texture(spr_toonification, 0));
