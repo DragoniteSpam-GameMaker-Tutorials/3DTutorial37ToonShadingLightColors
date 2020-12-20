@@ -65,4 +65,4 @@ vb_player = load_model("player.d3d");
 vb_link = load_model("link.d3d");
 link_rotation = 0;
 
-time_of_day = 0;
+time = 0;

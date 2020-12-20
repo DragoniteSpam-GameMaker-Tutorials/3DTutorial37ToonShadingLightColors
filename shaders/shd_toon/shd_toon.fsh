@@ -9,7 +9,7 @@ uniform vec4 lightColor;
 uniform float lightRange;
 
 uniform sampler2D rampTex;
-uniform float time_value;
+uniform float time;
 
 void main() {
     vec4 starting_color = v_vColour * texture2D(gm_BaseTexture, v_vTexcoord);
@@ -23,7 +23,7 @@ void main() {
     lightIncoming = normalize(-lightIncoming);
     float NdotL = max(dot(v_worldNormal, lightIncoming), 0.);
     
-    vec2 NdotL_tex = vec2(NdotL, time_value);
+    vec2 NdotL_tex = vec2(NdotL, time);
     vec4 NdotL_ramp = texture2D(rampTex, NdotL_tex);
     //float NdotL_adjusted = (NdotL_ramp.r + NdotL_ramp.b + NdotL_ramp.g) / 3.0;
     

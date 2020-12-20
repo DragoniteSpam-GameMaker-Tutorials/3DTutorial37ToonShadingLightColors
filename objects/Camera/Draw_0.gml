@@ -26,6 +26,8 @@ vertex_submit(vbuffer, pr_trianglelist, sprite_get_texture(spr_grass, 0));
 
 shader_reset();
 
+time++;
+
 shader_set(shd_toon);
 var uniform_light_pos = shader_get_uniform(shd_toon, "lightPosition");
 var uniform_light_color = shader_get_uniform(shd_toon, "lightColor");
@@ -36,8 +38,9 @@ shader_set_uniform_f(uniform_light_pos, 150, 150, 32);
 shader_set_uniform_f(uniform_light_color, 1, 1, 1, 1);
 shader_set_uniform_f(uniform_light_range, 1000);
 
-var uniform_time_value = shader_get_uniform(shd_toon, "time_value");
-shader_set_uniform_f(uniform_time_value, frac(time_of_day / 500));
+gpu_set_tex_repeat(false);
+var uniform_time = shader_get_uniform(shd_toon, "time");
+shader_set_uniform_f(uniform_time, frac(time / 400));
 
 var sampler_toon_ramp = shader_get_sampler_index(shd_toon, "rampTex");
 texture_set_stage(sampler_toon_ramp, sprite_get_texture(spr_toonification, 0));
