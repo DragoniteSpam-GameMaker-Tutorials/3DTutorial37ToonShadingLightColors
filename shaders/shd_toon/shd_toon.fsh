@@ -17,7 +17,7 @@ void main() {
     
     vec4 lightAmbient = vec4(0.125, 0.125, 0.125, 1.);
     
-    // Spot light stuff
+    // Point light stuff
     vec3 lightIncoming = v_worldPosition - lightPosition;
     float lightDist = length(lightIncoming);
     lightIncoming = normalize(-lightIncoming);
